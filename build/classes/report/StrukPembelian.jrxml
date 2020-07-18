@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="190ca095-5125-4bd7-be78-6d33e382cf4a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="291"/>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pembelian.`id` AS pembelian_id,
+     pembelian.`tanggal` AS pembelian_tanggal,
+     pembelian.`total` AS pembelian_total,
+     pembelian.`bayar` AS pembelian_bayar,
+     pembelian.`kembalian` AS pembelian_kembalian,
+     pembelian.`user_id` AS pembelian_user_id,
+     pembelian.`supplier_id` AS pembelian_supplier_id,
+     pembelian_item.`id` AS pembelian_item_id,
+     pembelian_item.`qty` AS pembelian_item_qty,
+     pembelian_item.`subtotal` AS pembelian_item_subtotal,
+     pembelian_item.`pembelian_id` AS pembelian_item_pembelian_id,
+     pembelian_item.`barang_id` AS pembelian_item_barang_id,
+     barang.`id` AS barang_id,
+     barang.`namabarang` AS barang_namabarang,
+     barang.`jenisbarang` AS barang_jenisbarang,
+     barang.`hargabeli` AS barang_hargabeli,
+     supplier.`nama` AS supplier_nama
+FROM
+     `pembelian` pembelian INNER JOIN `pembelian_item` pembelian_item ON pembelian.`id` = pembelian_item.`pembelian_id`
+     INNER JOIN `barang` barang ON pembelian_item.`barang_id` = barang.`id`
+     INNER JOIN `supplier` supplier ON pembelian.`supplier_id` = supplier.`id` where pembelian.id=$P{id}]]>
+	</queryString>
+	<field name="pembelian_id" class="java.lang.Integer"/>
+	<field name="pembelian_tanggal" class="java.sql.Date"/>
+	<field name="pembelian_total" class="java.lang.Double"/>
+	<field name="pembelian_bayar" class="java.lang.Double"/>
+	<field name="pembelian_kembalian" class="java.lang.Double"/>
+	<field name="pembelian_user_id" class="java.lang.Integer"/>
+	<field name="pembelian_supplier_id" class="java.lang.Integer"/>
+	<field name="pembelian_item_id" class="java.lang.Integer"/>
+	<field name="pembelian_item_qty" class="java.lang.Integer"/>
+	<field name="pembelian_item_subtotal" class="java.lang.Double"/>
+	<field name="pembelian_item_pembelian_id" class="java.lang.Integer"/>
+	<field name="pembelian_item_barang_id" class="java.lang.Integer"/>
+	<field name="barang_id" class="java.lang.Integer"/>
+	<field name="barang_namabarang" class="java.lang.String"/>
+	<field name="barang_jenisbarang" class="java.lang.String"/>
+	<field name="barang_hargabeli" class="java.lang.Double"/>
+	<field name="supplier_nama" class="java.lang.String"/>
+	<variable name="Kembali" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{pembelian_bayar}-$F{pembelian_total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="250" splitType="Stretch">
+			<image>
+				<reportElement x="89" y="0" width="382" height="112" uuid="38a128da-9f9f-43c0-97e2-efcae1ca7c91"/>
+				<imageExpression><![CDATA["G:\\java\\Penjualanlaptop\\src\\icon\\logo-laptop.jpg"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="126" width="555" height="1" uuid="43b11e96-8177-42cc-8e68-890554bdecbb"/>
+			</line>
+			<line>
+				<reportElement x="0" y="141" width="555" height="1" uuid="5c98d953-0137-485f-9be5-84e8a897e387"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="153" width="555" height="20" uuid="243b79b4-133e-4632-9601-39f9854b724b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEMBELIAN LAPTOP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="154" y="185" width="278" height="20" uuid="5d87a8ba-5347-4023-9f1d-7c570087a857"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="14"/>
+				</textElement>
+				<text><![CDATA[JL. LALU  MUHDAR N0 . 2 SELONG LOMBOK TIMUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="223" width="100" height="16" uuid="bc4b94e5-cf69-4688-a7d9-89ff4ddba31c"/>
+				<textElement>
+					<font fontName="Lucida Console" size="14"/>
+				</textElement>
+				<text><![CDATA[082339349577]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="239" width="555" height="1" uuid="d0a4c44a-fd36-428f-a618-3a80d26c1036"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="321" y="5" width="111" height="20" uuid="51b154c1-16d7-42fc-8655-f5c12eb837f6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[ TANGGAL ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="443" y="6" width="111" height="20" uuid="fb4afa21-bc75-4361-8216-f5016b2cc405"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_tanggal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="32" width="111" height="20" uuid="2dcdfba7-3502-4527-a41c-97721a8ee2e9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[ NAMA SUPPLIER]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="443" y="32" width="112" height="20" uuid="7a6d8254-5a5f-46eb-90a6-1f04822b99cf"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{supplier_nama}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="54" width="555" height="1" uuid="1088f17c-1023-47db-affc-a7587a849108"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="92" height="20" uuid="3c74e8bf-9736-48d9-a5f5-0c911dd9e665"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[ID BARANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="0" width="92" height="20" uuid="c4e5599c-5956-47af-9028-10ed52ade281"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[NAMA BARANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="92" height="20" uuid="97212e6f-73fe-4f3f-8172-797738a19f53"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[JENIS BARANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="92" height="20" uuid="ef63cbae-4536-4b41-8e91-0457d2b2620f"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[HARGA BELI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="0" width="92" height="20" uuid="9aef9137-826a-406e-9f06-8696b0e22a6c"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="92" height="20" uuid="ccb1c7ef-ca33-4a8f-9ccb-eafe59d8d9f0"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[SUBTOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="92" height="20" uuid="5d2e3b65-01bb-4696-9446-51816cdcc1f8"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{barang_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="0" width="92" height="20" uuid="98c47c32-15ce-4fac-8303-a236d63e57dc"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{barang_namabarang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="0" width="91" height="20" uuid="a96ce406-77aa-4d8b-bf33-b3d23b01619a"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00FFCC"/>
+					<topPen lineWidth="1.0" lineColor="#00FFCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00FFCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00FFCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00FFCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{barang_jenisbarang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="92" height="20" uuid="08db4a5a-da9a-421a-9898-075b51f6606a"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{barang_hargabeli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="92" height="20" uuid="c0915a4a-cd0a-4c5c-b4fd-5c4e9a5a3de1"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_item_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="92" height="20" uuid="95e28c24-f984-4f14-bbf3-34a0848e6bc6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.0" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.0" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_item_subtotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="31" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="308" splitType="Stretch">
+			<textField>
+				<reportElement x="444" y="111" width="111" height="20" uuid="583376b2-8d5d-4799-b5c1-3506fb959323"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_bayar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="88" width="110" height="20" uuid="247ae59c-ac82-4033-aaec-d1b43c3a8ad5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="332" y="111" width="110" height="20" uuid="6c6be776-2d4e-43e5-8506-1e9c47241a75"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[  BAYAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="88" width="110" height="20" uuid="bd679b95-fc5a-4d44-a0f5-1815932f2fc8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[  TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="15" width="552" height="20" uuid="b18fa8c9-4996-4f82-bdda-030303e42774"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="14"/>
+				</textElement>
+				<text><![CDATA[TERIMA KASIH ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="135" width="109" height="20" uuid="99739762-8823-470e-bc07-cfa888470907"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<text><![CDATA[  KEMBALIAN]]></text>
+			</staticText>
+			<line>
+				<reportElement x="6" y="6" width="552" height="1" uuid="ea7ca87a-a7be-4943-aab9-2a69f406a2f9"/>
+			</line>
+			<textField>
+				<reportElement x="444" y="135" width="111" height="20" uuid="da57a21d-078e-4dee-a2b7-ef5b5d1e86db"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lucida Console" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Kembali}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

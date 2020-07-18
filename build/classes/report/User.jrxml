@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5aba076a-8cfa-42cc-a6fc-1f41ee3e0502">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     user.`id` AS user_id,
+     user.`nama` AS user_nama,
+     user.`username` AS user_username,
+     user.`password` AS user_password
+FROM
+     `user` user]]>
+	</queryString>
+	<field name="user_id" class="java.lang.Integer"/>
+	<field name="user_nama" class="java.lang.String"/>
+	<field name="user_username" class="java.lang.String"/>
+	<field name="user_password" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="005e5319-3885-4bf1-9c81-47acb2f9676d"/>
+				<staticText>
+					<reportElement x="186" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="46013b65-c295-4dc3-bc77-8e619d4105d3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Laporan User]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="bccebf9b-de2e-4079-bfe7-e6da4a4bf3a2"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="cdf7ffd9-71c5-4623-8765-b497be4f19f9"/>
+				<box>
+					<pen lineWidth="1.25" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.25" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[USER ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5c68bd89-ceb8-48a5-acab-efa15c7dde45"/>
+				<box>
+					<pen lineWidth="1.25" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.25" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA USER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0b757c09-8499-4690-a0b6-93a6b1ad58c1"/>
+				<box>
+					<pen lineWidth="1.25" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.25" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[USERNAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="666298bc-883f-49f9-b5d8-28735fc8a653"/>
+				<box>
+					<pen lineWidth="1.25" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.25" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PASSWORD]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="2b320ac3-7dec-4049-847e-c9431182617b"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="138" height="20" uuid="58c99ecf-2772-4339-a7db-9d6c29d8a8aa"/>
+				<box>
+					<pen lineWidth="1.25" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.25" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_id}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="138" y="0" width="138" height="20" uuid="a87b5d5c-889f-457c-b755-683ed1ef5ea1"/>
+				<box>
+					<pen lineWidth="1.25" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.25" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_nama}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="276" y="0" width="138" height="20" uuid="5eacd86d-4b29-4ab1-914f-a4e1cd839445"/>
+				<box>
+					<pen lineWidth="1.25" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.25" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_username}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="414" y="0" width="138" height="20" uuid="e0969948-3809-4886-9b37-1f81fc5fc157"/>
+				<box>
+					<pen lineWidth="1.25" lineColor="#00CCCC"/>
+					<topPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<leftPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<bottomPen lineWidth="1.25" lineColor="#00CCCC"/>
+					<rightPen lineWidth="1.25" lineColor="#00CCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_password}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="609a3194-470a-408d-8ff3-c038e41ec8ab"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="c3786d20-03b5-4fdf-859c-cc7ad7c5ac86"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="10e17acb-79b7-4609-b56b-3acafb26b67c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
